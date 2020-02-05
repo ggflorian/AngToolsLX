@@ -2,17 +2,17 @@
 <div class="container">
     <form #frm="ngForm" (ngSubmit)="saveTool(frm)">
         <div class="form-group">
-            <label for="nm">Denumire</label>
-            <input id="nm" name="name" type="text" name="name" [(ngModel)]="tool.name" class="form-control" required minlength="4">
+            <label for="nm">Denumire Unealta</label>
+            <input id="nm" name="name" type="text" name="name" [(ngModel)]="tl.name" class="form-control" required minlength="4">
         </div>
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="vl">Pret</label>
-                <input id="vl" name="value" type="number" name="value" [(ngModel)]="tool.value" class="form-control">
+                <input id="vl" name="value" type="number" name="value" [(ngModel)]="tl.value" class="form-control">
             </div>
             <div class="form-group col-md-7">
                 <label for="sts">Stare</label>
-                <input type="text" id="sts" name="status" [(ngModel)]="tool.status" class="form-control" required>
+                <input type="text" id="sts" name="status" [(ngModel)]="tl.status" class="form-control" required>
             </div>
         </div>
 

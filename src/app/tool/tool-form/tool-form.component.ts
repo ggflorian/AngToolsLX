@@ -4,13 +4,14 @@ import { ToolService } from 'src/app/shared/tool.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-fool-form',
-  templateUrl: './fool-form.component.html',
-  styleUrls: ['./fool-form.component.css']
+  selector: 'app-tool-form',
+  templateUrl: './tool-form.component.html',
+  styleUrls: ['./tool-form.component.css']
 })
-export class FoolFormComponent implements OnInit {
 
-  tool: Tool;
+export class ToolFormComponent implements OnInit {
+
+  tl: Tool;
 
   constructor(private ts:ToolService) { }
   
@@ -22,7 +23,7 @@ export class FoolFormComponent implements OnInit {
     if (form != null)
       form.reset();
 
-    this.tool = {
+    this.tl = {
       name: '',
       value: 0,
       status: ''

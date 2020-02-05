@@ -3,17 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FoolFormComponent } from './tools/fool-form/fool-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { ToolService } from './shared/tool.service';
+import { ToolFormComponent } from './tool/tool-form/tool-form.component';
+import { ToolListComponent } from './tool/tool-list/tool-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FoolFormComponent
+    ToolFormComponent,
+    ToolListComponent
   ],
   imports: [
     BrowserModule,
