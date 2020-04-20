@@ -8,9 +8,15 @@ import { Tool } from './tool.model';
 })
 export class ToolService {
 
-  readonly apiUrl = "http://test9.abt.ro"
+  readonly apiUrl = "http://test9.abt.ro/api"
+
+  list: Tool[];
 
   constructor(private http: HttpClient) { }
+
+  getAll(){
+    return this.http.get(this.apiUrl+"/tools").toPromise().then(tl => this.list = tl as Tool[]);
+  }
 
   postTool(tl:Tool){
     const body = {
@@ -18,9 +24,7 @@ export class ToolService {
         value: tl.value,
         status: tl.status
     }
-
-    console.log(body);
     
-    return this.http.post(this.apiUrl + "/api/tools", body);
+    return this.http.post(this.apiUrl + "/tools", body);
   }
 }
