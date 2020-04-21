@@ -14,10 +14,6 @@ export class ToolService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(){
-    return this.http.get(this.apiUrl+"/tools").toPromise().then(tl => this.list = tl as Tool[]);
-  }
-
   postTool(tl:Tool){
     const body = {
         name: tl.name,
@@ -26,5 +22,17 @@ export class ToolService {
     }
     
     return this.http.post(this.apiUrl + "/tools", body);
+  } // C - create
+
+  getAll(){
+    return this.http.get(this.apiUrl+"/tools").toPromise().then(tl => this.list = tl as Tool[]);
+  } // R - read
+
+  putTool(id: number, tool: Tool){
+
+  } // E - edit
+
+  deleteTool(id: number){
+    return this.http.delete(this.apiUrl + "/tools" + id.toString());
   }
 }

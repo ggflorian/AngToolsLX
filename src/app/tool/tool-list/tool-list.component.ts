@@ -15,4 +15,10 @@ export class ToolListComponent implements OnInit {
     this.toolService.getAll();
   }
 
+  deleteTool(){
+    if (!confirm("Are you sure you want to delete this record?")) return;
+    
+    alert('will delete this record');
+    //this.toolService.deleteTool(id);
+  }
 }
