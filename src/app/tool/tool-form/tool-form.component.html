@@ -3,16 +3,16 @@
     <form #frm="ngForm" (ngSubmit)="saveTool(frm)">
         <div class="form-group">
             <label for="nm">Denumire Unealta</label>
-            <input id="nm" name="name" type="text" name="name" [(ngModel)]="tl.name" class="form-control" required minlength="4">
+            <input id="nm" name="name" type="text" name="name" [(ngModel)]="ts.formData.name" class="form-control" required minlength="4">
         </div>
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="vl">Pret</label>
-                <input id="vl" name="value" type="number" name="value" [(ngModel)]="tl.value" class="form-control">
+                <input id="vl" name="value" type="number" name="value" [(ngModel)]="ts.formData.value" class="form-control">
             </div>
             <div class="form-group col-md-7">
-                <label for="sts">Stare</label>
-                <input type="text" id="sts" name="status" [(ngModel)]="tl.status" class="form-control" required>
+                <label for="st">Stare</label>
+                <input type="text" id="st" name="status" [(ngModel)]="ts.formData.status" class="form-control" required>
             </div>
         </div>
 

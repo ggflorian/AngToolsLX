@@ -9,7 +9,7 @@ import { ToolService } from 'src/app/shared/tool.service';
 })
 export class ToolListComponent implements OnInit {
   
-  constructor(private toolService: ToolService) { }
+  constructor(public toolService: ToolService) { }
 
   ngOnInit() {
     this.toolService.getAll();
@@ -17,6 +17,7 @@ export class ToolListComponent implements OnInit {
 
   populateForm(tool: Tool){
     this.toolService.formData = Object.assign({}, tool);
+    console.log(this.toolService.formData);
   }
 
   editTool() {
@@ -26,6 +27,14 @@ export class ToolListComponent implements OnInit {
   deleteTool(id: number) {
     if (!confirm("Are you sure you want to delete this record?")) return;
     
-    this.toolService.deleteTool(id);
+    this.toolService.deleteTool(id).subscribe(
+      resp => {
+        this.toolService.getAll();
+      },
+      err => { 
+        console.log(err); 
+      }
+    );
   }
+
 }

@@ -11,9 +11,7 @@ import { NgForm } from '@angular/forms';
 
 export class ToolFormComponent implements OnInit {
 
-  tl: Tool;
-
-  constructor(private ts:ToolService) { }
+  constructor(private ts: ToolService) { }
   
   ngOnInit() {
     this.resetForm()
@@ -23,7 +21,7 @@ export class ToolFormComponent implements OnInit {
     if (form != null)
       form.reset();
 
-    this.tl = {
+    this.ts.formData = {
       id: 0,
       name: '',
       value: 0,
@@ -32,8 +30,36 @@ export class ToolFormComponent implements OnInit {
   }
 
   saveTool(frm: NgForm){
-    this.ts.postTool(frm.value).subscribe( (dt:any) => {
-      console.log(dt);
-    });
+    let tid = this.ts.formData.id;
+    if (tid == 0)
+      this.insertRecord(frm);
+    else 
+      this.updateRecord(tid, frm);
+  }
+
+  insertRecord(frm: NgForm) {
+    this.ts.postTool(frm.value).subscribe( 
+      resp => {
+        //console.log(resp); // tool fields
+        this.resetForm(frm);
+        this.ts.getAll();
+        //alertify.success('Inserted successfully!');
+      },
+      err => {
+        console.log(err);
+      });
+  }
+
+  updateRecord(id:number, frm: NgForm) {
+    this.ts.putTool(id, frm.value).subscribe( 
+      resp => {
+        //console.log(resp); // tool fields
+        this.resetForm(frm);
+        this.ts.getAll();
+        //alertify.success('Inserted successfully!');
+      },
+      err => {
+        console.log(err);
+      });
   }
 }

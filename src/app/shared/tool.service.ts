@@ -39,7 +39,8 @@ export class ToolService {
 
 
   deleteTool(id: number){
-    return this.http.delete(this.apiUrl + "/tools" + id.toString());
+    alert(this.apiUrl + "/tools/" + id.toString());
+    return this.http.delete(this.apiUrl + "/tools/" + id.toString());
   } // D - delete
   
 }
