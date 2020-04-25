@@ -1,20 +1,22 @@
 
 <table class="table table-striped table-hover">
 
-    <thead>
+    <thead class="table-info font-weight-bold">
         <tr>
-            <td>Name</td>
-            <td>Price</td>
-            <td>Status</td>
+            <td>#</td>
+            <td>Denumire</td>
+            <td>Pret</td>
+            <td>Stare</td>
             <td></td>
         </tr>
     </thead>
 
     <tbody>
-        <tr *ngFor="let tool of toolService.toolList">
-            <td>{{tool.name}}</td>
+        <tr *ngFor="let tool of toolService.toolList ; let i = index">
+            <td>{{ i+1 }}</td>
+            <td class="text-capitalize">{{tool.name}}</td>
             <td>{{tool.value}}</td>
-            <td>{{tool.status}}</td>
+            <td class="text-uppercase">{{tool.status}}</td>
             <td>
                 <a class="tl-link text-primary" onclick="editTool()"><i class="fa fa-edit"></i></a> &nbsp; | &nbsp;  
                 <a class="tl-link text-danger" onclick="deleteTool()"><i class="fa fa-trash"></i></a>
