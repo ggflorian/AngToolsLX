@@ -25,17 +25,21 @@ export class ToolService {
     return this.http.post(this.apiUrl + "/tools", body);
   } // C - create
 
+
   getAll(){
     return this.http.get(this.apiUrl+"/tools")
       .toPromise()
       .then(tl => this.toolList = tl as Tool[]);
   } // R - read
 
+
   putTool(id: number, tool: Tool){
     return this.http.put(this.apiUrl + "/tools/" + this.formData.id, tool);
   } // U - update
 
+
   deleteTool(id: number){
     return this.http.delete(this.apiUrl + "/tools" + id.toString());
   } // D - delete
+  
 }

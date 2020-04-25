@@ -15,14 +15,17 @@ export class ToolListComponent implements OnInit {
     this.toolService.getAll();
   }
 
+  populateForm(tool: Tool){
+    this.toolService.formData = Object.assign({}, tool);
+  }
+
   editTool() {
 
   }
-  
-  deleteTool() {
+
+  deleteTool(id: number) {
     if (!confirm("Are you sure you want to delete this record?")) return;
     
-    alert('will delete this record');
-    //this.toolService.deleteTool(id);
+    this.toolService.deleteTool(id);
   }
 }

@@ -13,14 +13,17 @@
 
     <tbody>
         <tr *ngFor="let tool of toolService.toolList ; let i = index">
-            <td>{{ i+1 }}</td>
-            <td class="text-capitalize">{{tool.name}}</td>
-            <td>{{tool.value}}</td>
-            <td class="text-uppercase">{{tool.status}}</td>
+
+            <td (click)="populateForm(tool)">{{ i+1 }}</td>
+            <td (click)="populateForm(tool)" class="text-capitalize">{{tool.name}}</td>
+            <td (click)="populateForm(tool)"> {{tool.value}}</td>
+            <td (click)="populateForm(tool)" class="text-uppercase">{{tool.status}}</td>
+            
             <td>
-                <a class="tl-link text-primary" onclick="editTool()"><i class="fa fa-edit"></i></a> &nbsp; | &nbsp;  
-                <a class="tl-link text-danger" onclick="deleteTool()"><i class="fa fa-trash"></i></a>
+                <a class="tl-link text-primary" (click)="populateForm(tool)"><i class="fa fa-edit"></i></a> &nbsp; | &nbsp;  
+                <a class="tl-link text-danger" (click)="deleteTool(tool.id)"><i class="fa fa-trash"></i></a>
             </td>
+
         </tr>
     </tbody>
 
