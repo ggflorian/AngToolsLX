@@ -15,7 +15,11 @@ export class ToolListComponent implements OnInit {
     this.toolService.getAll();
   }
 
-  deleteTool(){
+  editTool() {
+
+  }
+  
+  deleteTool() {
     if (!confirm("Are you sure you want to delete this record?")) return;
     
     alert('will delete this record');

@@ -24,6 +24,7 @@ export class ToolFormComponent implements OnInit {
       form.reset();
 
     this.tl = {
+      id: 0,
       name: '',
       value: 0,
       status: ''
@@ -33,13 +34,6 @@ export class ToolFormComponent implements OnInit {
   saveTool(frm: NgForm){
     this.ts.postTool(frm.value).subscribe( (dt:any) => {
       console.log(dt);
-      if (dt.Succeeded)
-      { 
-        this.resetForm(frm)
-        console.log("Yes Post");
-      }
-      else
-        console.log("No Post");
-    })
+    });
   }
 }

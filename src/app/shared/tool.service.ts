@@ -10,7 +10,8 @@ export class ToolService {
 
   readonly apiUrl = "http://test9.abt.ro/api"
 
-  list: Tool[];
+  formData: Tool;
+  toolList: Tool[];
 
   constructor(private http: HttpClient) { }
 
@@ -25,14 +26,16 @@ export class ToolService {
   } // C - create
 
   getAll(){
-    return this.http.get(this.apiUrl+"/tools").toPromise().then(tl => this.list = tl as Tool[]);
+    return this.http.get(this.apiUrl+"/tools")
+      .toPromise()
+      .then(tl => this.toolList = tl as Tool[]);
   } // R - read
 
   putTool(id: number, tool: Tool){
-
-  } // E - edit
+    return this.http.put(this.apiUrl + "/tools/" + this.formData.id, tool);
+  } // U - update
 
   deleteTool(id: number){
     return this.http.delete(this.apiUrl + "/tools" + id.toString());
-  }
+  } // D - delete
 }
