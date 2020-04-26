@@ -15,7 +15,7 @@ import { ToolFormComponent } from './tool/tool-form/tool-form.component';
 import { ToolListComponent } from './tool/tool-list/tool-list.component';
 import { ToolList2Component } from './tool/tool-list2/tool-list2.component';
 
-import { DataTableModule } from 'angular-4-data-table'
+import { DataTableModule } from 'angular5-data-table'
 
 @NgModule({
   declarations: [

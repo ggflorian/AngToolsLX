@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToolService } from 'src/app/shared/tool.service';
 import { Tool } from 'src/app/shared/tool.model';
 import { Subscription } from 'rxjs';
-import { DataTableResource } from 'angular-4-data-table';
+import { DataTableResource } from 'angular5-data-table';
 
 @Component({
   selector: 'app-tool-list2',
