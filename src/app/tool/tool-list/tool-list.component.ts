@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Tool } from 'src/app/shared/tool.model';
 import { ToolService } from 'src/app/shared/tool.service';
 
+declare let alertify: any;
+
 @Component({
   selector: 'app-tool-list',
   templateUrl: './tool-list.component.html',
@@ -30,6 +32,7 @@ export class ToolListComponent implements OnInit {
     this.toolService.deleteTool(id).subscribe(
       resp => {
         this.toolService.getAll();
+        alertify.success(' Deleted successfully!');
       },
       err => { 
         console.log(err); 

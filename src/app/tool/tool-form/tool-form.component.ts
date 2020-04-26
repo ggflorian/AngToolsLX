@@ -3,6 +3,8 @@ import { Tool } from 'src/app/shared/tool.model';
 import { ToolService } from 'src/app/shared/tool.service';
 import { NgForm } from '@angular/forms';
 
+declare let alertify: any;
+
 @Component({
   selector: 'app-tool-form',
   templateUrl: './tool-form.component.html',
@@ -43,7 +45,8 @@ export class ToolFormComponent implements OnInit {
         //console.log(resp); // tool fields
         this.resetForm(frm);
         this.ts.getAll();
-        //alertify.success('Inserted successfully!');
+        
+        alertify.success(' Inserted successfully!');
       },
       err => {
         console.log(err);
@@ -56,7 +59,8 @@ export class ToolFormComponent implements OnInit {
         //console.log(resp); // tool fields
         this.resetForm(frm);
         this.ts.getAll();
-        //alertify.success('Inserted successfully!');
+
+        alertify.success(' Updated successfully!');
       },
       err => {
         console.log(err);

@@ -33,8 +33,10 @@ export class ToolService {
   } // R - read
 
 
-  putTool(id: number, tool: Tool){
-    return this.http.put(this.apiUrl + "/tools/" + this.formData.id, tool);
+  putTool(tid: number, tool: Tool){
+    const obj = { id: tid, name: tool.name, value: tool.value, status: tool.status }
+    
+    return this.http.put(this.apiUrl + "/tools/" + tid.toString(), obj);
   } // U - update
 
 
