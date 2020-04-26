@@ -19,11 +19,6 @@ export class ToolListComponent implements OnInit {
 
   populateForm(tool: Tool){
     this.toolService.formData = Object.assign({}, tool);
-    console.log(this.toolService.formData);
-  }
-
-  editTool() {
-
   }
 
   deleteTool(id: number) {
