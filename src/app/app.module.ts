@@ -15,7 +15,8 @@ import { ToolFormComponent } from './tool/tool-form/tool-form.component';
 import { ToolListComponent } from './tool/tool-list/tool-list.component';
 import { ToolList2Component } from './tool/tool-list2/tool-list2.component';
 
-import { DataTableModule } from 'angular5-data-table'
+import { DataTableModule } from 'angular5-data-table';
+import { ToolList3Component } from './tool/tool-list3/tool-list3.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DataTableModule } from 'angular5-data-table'
     ToolFormComponent,
     ToolListComponent,
     ToolComponent,
-    ToolList2Component
+    ToolList2Component,
+    ToolList3Component
   ],
   imports: [
     BrowserModule,

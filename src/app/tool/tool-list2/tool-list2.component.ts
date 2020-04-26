@@ -28,10 +28,9 @@ export class ToolList2Component implements OnInit {
   private initializeTable(tools: Tool[]) {
     this.tableResource = new DataTableResource(tools);
 
-    this.tableResource.query({ offset: 0 })
-      .then(items => this.items = items);
+    //this.tableResource.query({}).then(items => this.items = items);
     
-      this.tableResource.count()
+    this.tableResource.count()
       .then(count => this.itemCount = count);
   }
 
@@ -41,5 +40,7 @@ export class ToolList2Component implements OnInit {
     this.tableResource.query(params)
       .then(items => this.items = items);    
   }
+
+  rowTooltip(item) { return item.name; }
 
 }
