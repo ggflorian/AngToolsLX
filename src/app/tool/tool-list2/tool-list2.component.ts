@@ -11,14 +11,15 @@ import { DataTableResource } from 'angular-4-data-table';
 })
 export class ToolList2Component implements OnInit {
 
-  tools: Tool[];
+  //tools: Tool[];
   //subscription: Subscription;
   tableResource: DataTableResource<Tool>;
   items: Tool[] = [];
   itemCount: number; 
 
   constructor(private toolService: ToolService) { 
-    this.initializeTable(this.tools);
+    toolService.getAll();
+    this.initializeTable(this.toolService.toolList);
   }
 
   ngOnInit() {
