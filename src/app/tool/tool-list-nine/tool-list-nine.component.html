@@ -1,0 +1,41 @@
+
+<table class="table table-striped table-hover" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="3">
+
+    <thead>
+    <tr>
+        <th style="width: 40%">
+            <mfDefaultSorter by="name">Denumire </mfDefaultSorter>
+        </th>
+        <th style="width: 20%">
+            <mfDefaultSorter by="value">Valoare</mfDefaultSorter>
+        </th>
+        <th style="width: 20%">
+            <mfDefaultSorter by="status">Stare</mfDefaultSorter>
+        </th>
+        <th style="width: 20%"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let item of mf.data ; let i = index">
+        <td (click)="populateForm(item.id)">{{item.name}}</td>
+        <td (click)="populateForm(item.id)">{{item.value}}</td>
+        <td (click)="populateForm(item.id)">{{item.status}}</td>
+        <td>
+            <a class="tl-link text-primary" (click)="populateForm(item.id)"><i class="fa fa-edit"></i></a> &nbsp; | &nbsp;  
+            <a class="tl-link text-danger" (click)="deleteTool(item.id)"><i class="fa fa-trash"></i></a>
+        </td>
+    </tr>
+    </tbody>
+    
+    <tfoot>
+        <tr><td colspan="4"></td></tr>
+        <tr>
+            <td></td><td></td>
+            <td colspan="2">
+                <mfBootstrapPaginator [rowsOnPageSet]="[]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+    </tfoot>
+    
+</table>

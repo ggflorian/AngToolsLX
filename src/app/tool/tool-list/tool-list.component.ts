@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Tool } from 'src/app/shared/tool.model';
 import { ToolService } from 'src/app/shared/tool.service';
 
 declare let alertify: any;
+declare var $;
 
 @Component({
   selector: 'app-tool-list',
@@ -11,10 +12,17 @@ declare let alertify: any;
 })
 export class ToolListComponent implements OnInit {
   
+  @ViewChild('dataTable', {static: true}) table;
+  dataTable: any;
+  dtOptions: any = {};
+
   constructor(public toolService: ToolService) { }
 
   ngOnInit() {
     this.toolService.getAll();
+
+    //this.dataTable = $(this.table.nativeElement);
+    //this.dataTable.DataTable(this.dtOptions);
   }
 
   populateForm(tool: Tool){
