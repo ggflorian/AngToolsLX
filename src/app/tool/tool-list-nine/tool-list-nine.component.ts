@@ -27,7 +27,7 @@ export class ToolListNineComponent implements OnInit {
     //this.toolService.getTool(tid).subscribe(tl => this.tool = tl as Tool); // delay
     //this.toolService.formData = Object.assign({}, this.tool);
 
-    this.toolService.getTool(tid).subscribe(tl => this.toolService.formData = Object.assign({}, tl as Tool))
+    this.toolService.getToolById(tid).subscribe(tl => this.toolService.formData = Object.assign({}, tl as Tool))
   }
 
   filterData(query: string){

@@ -28,9 +28,13 @@ export class ToolService {
 
 
   getAll(){    
-    return this.http.get<Tool[]>(this.apiUrl+"/tools")
+    return this.http.get<Tool[]>(this.apiUrl + "/tools")
       .toPromise()
       .then(tl => this.toolList = tl as Tool[]);
+  }
+
+  getToolById(tid: number){
+    return this.http.get<Tool>(this.apiUrl + '/tools/' + tid.toString());
   } // R - read
 
 
@@ -42,15 +46,16 @@ export class ToolService {
 
 
   deleteTool(id: number){
-    alert(this.apiUrl + "/tools/" + id.toString());
     return this.http.delete(this.apiUrl + "/tools/" + id.toString());
   } // D - delete
 
-  
-  getTool(tid: number){
-    return this.http.get<Tool>(this.apiUrl + '/tools/' + tid.toString());
-  }
 
+
+  // ======== EXTRA ========
+
+  getAllObs(){
+    return this.http.get<Tool[]>(this.apiUrl + "/tools");
+  }
 
   getAllFakeData(){
     let fakeTools: Tool[] = [

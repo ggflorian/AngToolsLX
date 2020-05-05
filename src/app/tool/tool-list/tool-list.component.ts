@@ -17,10 +17,13 @@ export class ToolListComponent implements OnInit {
   constructor(public toolService: ToolService) {
     //this.toolService.getAllFakeData().subscribe(res => this.filteredToolList = this.tools = res); 
     
-    this.toolService.getAll().then(res => this.filteredToolList = this.tools = res);
+    //this.toolService.getAll().then(res => this.filteredToolList = this.tools = res);
+
+    //this.toolService.getAllObs().subscribe(res => this.filteredToolList = this.tools = res);
   }
 
   ngOnInit() {
+    this.toolService.getAll();
   }
 
   populateForm(tool: Tool){
@@ -28,7 +31,7 @@ export class ToolListComponent implements OnInit {
   }
 
   filterData(query: string) {
-    this.filteredToolList = (query) ? this.tools.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) : this.tools;
+    this.filteredToolList = (query) ? this.tools.filter(t => t.name.toLowerCase().includes(query.toLowerCase())) : this.tools;
   }
 
   deleteTool(id: number) {
