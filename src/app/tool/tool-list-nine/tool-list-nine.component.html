@@ -1,4 +1,11 @@
 
+
+    <div class="form-group">
+        <label for="srch">&nbsp; <b>Cautare Unealte</b></label>
+        <input id="srch" class="form-control" #query placeholder="Search..." (keyup)="filterData(query.value)" />
+    </div>
+
+
 <table class="table table-striped table-hover" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="3">
 
     <thead>

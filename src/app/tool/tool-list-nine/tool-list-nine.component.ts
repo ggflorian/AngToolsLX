@@ -11,15 +11,15 @@ declare let alertify: any;
 })
 export class ToolListNineComponent implements OnInit {
 
-  data: any[];
+  data: Tool[];
+  filteredToolList: Tool[];
   tool: Tool;
 
   constructor(public toolService: ToolService) { }
 
   ngOnInit() {
     this.toolService.getAll().then(res => {
-      //console.log(res);
-      this.data = res;
+      this.data = this.filteredToolList = res;
     });
   }
 
@@ -28,6 +28,10 @@ export class ToolListNineComponent implements OnInit {
     //this.toolService.formData = Object.assign({}, this.tool);
 
     this.toolService.getTool(tid).subscribe(tl => this.toolService.formData = Object.assign({}, tl as Tool))
+  }
+
+  filterData(query: string){
+    this.data = (query) ? this.filteredToolList.filter(t => t.name.toLowerCase().includes(query.toLowerCase())) : this.filteredToolList;
   }
 
   deleteTool(id: number) {

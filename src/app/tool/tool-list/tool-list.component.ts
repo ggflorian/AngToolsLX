@@ -3,7 +3,6 @@ import { Tool } from 'src/app/shared/tool.model';
 import { ToolService } from 'src/app/shared/tool.service';
 
 declare let alertify: any;
-declare var $;
 
 @Component({
   selector: 'app-tool-list',
@@ -11,22 +10,25 @@ declare var $;
   styleUrls: ['./tool-list.component.css']
 })
 export class ToolListComponent implements OnInit {
-  
-  @ViewChild('dataTable', {static: true}) table;
-  dataTable: any;
-  dtOptions: any = {};
 
-  constructor(public toolService: ToolService) { }
+  tools: Tool[];
+  filteredToolList: Tool[];
+
+  constructor(public toolService: ToolService) {
+    //this.toolService.getAllFakeData().subscribe(res => this.filteredToolList = this.tools = res); 
+    
+    this.toolService.getAll().then(res => this.filteredToolList = this.tools = res);
+  }
 
   ngOnInit() {
-    this.toolService.getAll();
-
-    //this.dataTable = $(this.table.nativeElement);
-    //this.dataTable.DataTable(this.dtOptions);
   }
 
   populateForm(tool: Tool){
     this.toolService.formData = Object.assign({}, tool);
+  }
+
+  filterData(query: string) {
+    this.filteredToolList = (query) ? this.tools.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) : this.tools;
   }
 
   deleteTool(id: number) {

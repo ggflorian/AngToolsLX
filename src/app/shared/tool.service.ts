@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http'
 import { Tool } from './tool.model';
+import { Observable, of, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class ToolService {
   } // C - create
 
 
-  getAll(){
-    return this.http.get(this.apiUrl+"/tools")
+  getAll(){    
+    return this.http.get<Tool[]>(this.apiUrl+"/tools")
       .toPromise()
       .then(tl => this.toolList = tl as Tool[]);
   } // R - read
@@ -47,6 +48,19 @@ export class ToolService {
 
   
   getTool(tid: number){
-    return this.http.get(this.apiUrl + '/tools/' + tid.toString());
+    return this.http.get<Tool>(this.apiUrl + '/tools/' + tid.toString());
+  }
+
+
+  getAllFakeData(){
+    let fakeTools: Tool[] = [
+      { id: 1, name: 'One', value: 2, status: 's1' },
+      { id: 2, name: 'Two', value: 4, status: 's2' },
+      { id: 3, name: 'Three', value: 6, status: 's3' },
+      { id: 4, name: 'Four', value: 8, status: 's4' },
+    ];
+
+    const source  = of(fakeTools);
+    return source;
   }
 }
